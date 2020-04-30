@@ -18,7 +18,7 @@
 		  data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;">
           <div class="price">{{$slide->category}}</div>
           <h2>{{$slide->title}}</h2>
-          <p class="bottom30">{{$slide->description}}
+          <p class="bottom30">{{ substr($slide->description, 0, 40)}}....
           </p>
           <div class="property_meta"> 
             <span><i class="icon-select-an-objecto-tool"></i>{{$slide->square_foot}} sq ft</span> 
@@ -30,8 +30,8 @@
             <span><i class="icon-safety-shower"></i>{{$slide->bathroom}} bathrooms</span>
           </div>
           <div class="bottom row">
-            <div class="col-sm-6"><span> <i class="icon-icons74"></i>{{$slide->address}}</span></div>
-            <div class="col-sm-6"><span>&#8358;{{$slide->price}} Per Month -<small> Apartment</small></span></div>
+            <div class="col-sm-6"><span> <i class="icon-icons74"></i>{{$slide->address}} </span></div>
+            <div class="col-sm-6"><span> &#8358;{{$slide->price}} Per Month -<small> Apartment</small></span></div>
           </div>
         </div>
       </li>
@@ -204,7 +204,7 @@
       </div>
       <div class="col-md-6 col-sm-6">
         <div class="feature_main">
-          <img src="images/{{$featured->photo}}" alt="featured" class="img-responsive" width="560px" height="368">
+          <img src="images/{{$featured->photo}}" alt="featured" class="img-responsive" style="width: 540px; height: 360px">
           <div class="bottom clearfix">
             <span class="pull-left">For Rent</span>
             <h4 class="pull-right">&#8358; {{$featured->price}} Per Month - <small>Family Home</small></h4>

@@ -23,7 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $slides = Property::where('featured', 1)
+         $slides = Property::where('featured', 1)
                ->orderBy('created_at', 'asc')
                ->take(4)
                ->get();
@@ -32,6 +32,8 @@ class HomeController extends Controller
                ->orderBy('created_at', 'asc')
                ->take(1)
                ->first();
+
+          // $testimony = Testimony::
 
         return view('welcome', compact('slides','featured'));
 
