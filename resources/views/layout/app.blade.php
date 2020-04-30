@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 <title>Castle</title>
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="css/reality-icon.css">
-<link rel="stylesheet" type="text/css" href="css/bootsnav.css">
-<link rel="stylesheet" type="text/css" href="css/cubeportfolio.min.css">
-<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css">
-<link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
-<link rel="stylesheet" type="text/css" href="css/owl.transitions.css">
-<link rel="stylesheet" type="text/css" href="css/settings.css">
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<link rel="stylesheet" type="text/css" href="css/range-Slider.min.css">
-<link rel="stylesheet" type="text/css" href="css/search.css">
-<link rel="icon" href="images/icon.png">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/font-awesome.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/reality-icon.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/bootsnav.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/cubeportfolio.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.fancybox.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/owl.carousel.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/owl.transitions.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/settings.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/range-Slider.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/search.css') }}">
+<link rel="icon" href="{{ asset('images/icon.png') }}">
 </head>
 <body>
 
@@ -42,11 +42,24 @@
         </div>
         <div class="col-md-7 text-right">
           <ul class="breadcrumb_top text-right">
+             @guest
+            <li><a href="{{ url('/login') }}"><i class="icon-icons179"></i>Login / Register</a></li>
+            @else
             <li><a href="favorite_properties.html"><i class="icon-icons43"></i>Favorites</a></li>
-      <li><a href="submit_property.html"><i class="icon-icons215"></i>Submit Property</a></li>
-      <li><a href="my_properties.html"><i class="icon-icons215"></i>My Property</a></li>
-      <li><a href="profile.html"><i class="icon-icons230"></i>Profile</a></li>
-      <li><a href="login.html"><i class="icon-icons179"></i>Login / Register</a></li>
+            <li><a href="submit_property.html"><i class="icon-icons215"></i>Submit Property</a></li>
+            <li><a href="my_properties.html"><i class="icon-icons215"></i>My Property</a></li>
+            <li><a href="profile.html"><i class="icon-icons230"></i>Profile</a></li>
+            <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+            @endguest
+
           </ul>
         </div>
       </div>
@@ -56,7 +69,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-3 col-sm-12">
-          <div class="logo"><a href="index5.html"><img title="Homestate" alt="" src="images/logo.png"></a></div>
+          <div class="logo"><a href="{{ url('/') }}"><img title="Homestate" alt="" src="images/logo.png"></a></div>
         </div>
         <!--Info Box-->
         <div class="col-md-9 col-sm-12 right">
@@ -103,7 +116,7 @@
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
             <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand sticky_logo" href="index5.html"><img src="images/logo-white.png" class="logo" alt=""></a>
+            <a class="navbar-brand sticky_logo" href="{{ url('/') }}"><img src="images/logo-white.png" class="logo" alt=""></a>
           </div> <!-- End Header Navigation -->
           <div class="collapse navbar-collapse" id="navbar-menu">
             <ul class="nav navbar-nav" data-in="fadeIn" data-out="fadeOut">
