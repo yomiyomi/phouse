@@ -214,5 +214,55 @@
     </div>
   </div>
 </section>
+@endsection
 
+@section('deals')
+<section id="deals" class="padding bg_light">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-10">
+        <h2 class="uppercase">Best Deal Properties</h2>
+        <p class="heading_space">We have Properties in these Areas View a list of Featured Properties.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="three-item owl-carousel">
+        @foreach($deals as $deal)
+        <div class="item feature_item">
+          <div class="image"><a href="#."> <img src="images/{{$deal->photo}}" alt="Featured Property" style="width: 364px; height: 254px"></a> 
+            <span class="price default_clr">For Rent</span>
+          </div>
+          <div class="proerty_content">
+            <div class="proerty_text">
+              <h3 class="bottom15"><a href="#.">{{$deal->title}}</a></h3>
+              <p>{{ substr($deal->description, 0, 40)}}......</p>
+              <h4 class="top15"> &#8358; {{$deal->price}} Per Month - <small>Family Home</small></h4>
+            </div>
+            <table class="table table-responsive">
+              <tbody>
+                <tr>
+                  <td><i class="icon-select-an-objecto-tool"></i>Total Area</td>
+                  <td class="text-right">{{$deal->square_foot}} sq ft</td>
+                </tr>
+                <tr>
+                  <td><i class="icon-bed"></i>Bedrooms</td>
+                  <td class="text-right">{{$deal->rooms}}</td>
+                </tr>
+                <tr>
+                  <td><i class="icon-safety-shower"></i>Bathrooms</td>
+                  <td class="text-right">{{$deal->bathroom}}</td>
+                </tr>
+                <tr>
+                  <td><i class="icon-garage"></i>Garage</td>
+                  <td class="text-right">{{$deal->garage}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        @endforeach
+      </div>
+    </div>
+  </div>
+</section>
 @endsection

@@ -33,10 +33,18 @@ class HomeController extends Controller
                ->take(1)
                ->first();
 
+          $deals = Property::where('featured', 1)
+                ->orderBy('price', 'asc')
+                ->take(6)
+                ->get();
           // $testimony = Testimony::
 
-        return view('welcome', compact('slides','featured'));
+        return view('welcome', compact('slides','featured','deals'));
 
 
+    }
+    public function show()
+    {
+      # code...
     }
 }
