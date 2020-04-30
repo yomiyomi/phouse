@@ -107,97 +107,8 @@
           </div> <!-- End Header Navigation -->
           <div class="collapse navbar-collapse" id="navbar-menu">
             <ul class="nav navbar-nav" data-in="fadeIn" data-out="fadeOut">
-              <li class="dropdown active">
-                <a href="#." class="dropdown-toggle" data-toggle="dropdown">Home </a>
-                <ul class="dropdown-menu">
-                  <li><a href="index.html">Home Style 1</a></li>
-                  <li><a href="index2.html">Home Style 2</a></li>
-                  <li><a href="index3.html">Home Style 3</a></li>
-                  <li><a href="index4.html">Home Style 4</a></li>
-                  <li> <a href="index5.html">Home Style 5</a></li>
-                  <li> <a href="index6.html">Home Style 6</a></li>
-                  <li> <a href="index7.html">Home Style 7</a></li>
-                  <li> <a href="index8.html">Home Style 8</a></li>
-                  <li> <a href="index9.html">Home Style 9</a></li>
-                  <li> <a href="fullscreen.html">Home Fullscreen<span>new</span></a></li>
-                </ul>
-              </li>
-              <li class="dropdown megamenu-fw">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Listing</a>
-                <ul class="dropdown-menu megamenu-content" role="menu">
-                  <li>
-                    <div class="row">
-                      <div class="col-menu col-md-3">
-                        <h5 class="title">PROPERTIES LIST</h5>
-                        <div class="content">
-                          <ul class="menu-col">
-                            <li><a href="listing1.html">Properties List</a></li>
-                            <li><a href="index7.html">Single Property</a></li>
-                            <li><a href="listing2.html">Search by City</a></li>
-                            <li><a href="listing5.html">Search by Category</a></li>
-                            <li><a href="listing3.html">Search by Type</a></li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div class="col-menu col-md-9">
-                        <h5 class="title bottom20">PROPERTIES LIST</h5>
-                        <div class="row">
-                          <div id="nav_slider" class="owl-carousel">
-                            <div class="item">
-                              <div class="image bottom15"> 
-                                <img src="images/nav-slider1.jpg" alt="Featured Property"> 
-                                <span class="nav_tag yellow text-uppercase">for rent</span>
-                              </div>
-                              <h4><a href="property_detail1.html">Park Avenue Apartment</a></h4>
-                              <p>Towson London, MR 21501</p>
-                            </div>
-                            <div class="item">
-                              <div class="image bottom15"> 
-                                <img src="images/nav-slider2.jpg" alt="Featured Property"> 
-                                <span class="nav_tag yellow text-uppercase">for rent</span>
-                              </div>
-                              <h4><a href="property_detail2.html">Park Avenue Apartment</a></h4>
-                              <p>Towson London, MR 21501</p>
-                            </div>
-                            <div class="item">
-                              <div class="image bottom15"> 
-                                <img src="images/nav-slider3.jpg" alt="Featured Property"> 
-                                <span class="nav_tag yellow text-uppercase">for rent</span>
-                              </div>
-                              <h4><a href="property_detail3.html">Park Avenue Apartment</a></h4>
-                              <p>Towson London, MR 21501</p>
-                            </div>
-                            <div class="item">
-                              <div class="image bottom15"> 
-                                <img src="images/nav-slider1.jpg" alt="Featured Property"> 
-                                <span class="nav_tag yellow text-uppercase">for rent</span>
-                              </div>
-                              <h4><a href="property_detail1.html">Park Avenue Apartment</a></h4>
-                              <p>Towson London, MR 21501</p>
-                            </div>
-                            <div class="item">
-                              <div class="image bottom15"> 
-                                <img src="images/nav-slider2.jpg" alt="Featured Property"> 
-                                <span class="nav_tag yellow text-uppercase">for rent</span>
-                              </div>
-                              <h4><a href="property_detail2.html">Park Avenue Apartment</a></h4>
-                              <p>Towson London, MR 21501</p>
-                            </div>
-                            <div class="item">
-                              <div class="image bottom15"> 
-                                <img src="images/nav-slider3.jpg" alt="Featured Property"> 
-                                <span class="nav_tag yellow text-uppercase">for rent</span>
-                              </div>
-                              <h4><a href="property_detail3.html">Park Avenue Apartment</a></h4>
-                              <p>Towson London, MR 21501</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </li>
+              <li><a href="index.html">Home</a></li>
+               <li><a href="contact.html">Contact Us</a></li>
               <li class="dropdown megamenu-fw">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Properties</a>
                 <ul class="dropdown-menu megamenu-content bg" role="menu">
@@ -338,7 +249,10 @@
 
 @yield('testimony')
 
+
 @yield('agent')
+
+@yield('partners')
 
 
 <!--Footer-->
