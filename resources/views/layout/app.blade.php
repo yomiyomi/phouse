@@ -260,6 +260,9 @@
 @yield ('latest')
 
 
+@yield('client')
+
+
 @yield('testimony')
 
 
