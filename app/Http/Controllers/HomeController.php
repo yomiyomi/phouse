@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Property;
+use App\Photo;
+use App\Category;
+use App\Type;
+use App\Feature;
 class HomeController extends Controller
 {
     /**
@@ -29,14 +33,27 @@ class HomeController extends Controller
                ->get();
 
          $featured = Property::where('featured', 1)
-               ->orderBy('created_at', 'asc')
+               ->orderBy('created_at', 'desc')
                ->take(1)
                ->first();
 
-          // $testimony = Testimony::
+          $deals = Property::where('featured', 1)
+                ->orderBy('price', 'asc')
+                ->take(6)
+                ->get();
 
-        return view('welcome', compact('slides','featured'));
+          $latests = Property::latest()
+                    ->take(4)
+                    ->get();
+    
+        return view('welcome', compact('slides','featured','deals','latests'));
 
 
+    }
+
+
+    public function show()
+    {
+      # code...
     }
 }
