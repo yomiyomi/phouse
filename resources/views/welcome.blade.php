@@ -295,20 +295,25 @@
     </div>
     <div class="row">
       <div id="two-col-slider" class="owl-carousel">
+        @foreach($latests as $latest)
         <div class="item">
           <div class="property_item heading_space">
-            <div class="image"> <a href="#."><img src="images/latest5.jpg" alt="latest property" class="img-responsive"></a> </div>
+             @php
+                $photo = $latest->photo->name;
+                $photo_id = json_decode($photo);
+              @endphp
+            <div class="image"> <a href="#."><img src="{{$latest->photo_id .''. $photo_id[0]->featured}}" alt="latest property" class="img-responsive" style="width: 560px; height: 310px"></a> </div>
             <div class="price default_clr clearfix bottom20">
-              <span class="tag pull-left">For Rent</span>
-              <h4 class="pull-right">$8,600 Per Month - <small>Family Home</small></h4>
+              <span class="tag pull-left">For {{ucfirst($latest->status->name)}}</span>
+              <h4 class="pull-right">&#8358;{{$latest->price }} - {{$latest->type->name}} - <small>{{$latest->category->name}}</small></h4>
             </div>
             <div class="proerty_content">
               <div class="proerty_text">
-                <h3 class="bottom15"> <a href="#.">Unique Villa With Private Beach</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam power nonummy nibh tempor cum soluta nobis eleifend option congue nihil imperdiet doming…</p>
+                <h3 class="bottom15"> <a href="#.">{{$latest->title}}</a></h3>
+                <p>{{$latest->description}}</p>
               </div>
               <div class="favroute clearfix">
-                <p class="pull-md-left">45 Regent Street, London, UK</p>
+                <p class="pull-md-left">{{$latest->address}}</p>
                 <ul class="pull-right">
                   <li><a href="javascript:void(0)"><i class="icon-video-player"></i></a></li>
                   <li><a href="javascript:void(0)"><i class="icon-like"></i></a></li>
@@ -322,103 +327,11 @@
                   <li><a href="javascript:void(0)" class="vimo"><i class="icon-vimeo3"></i> Vimeo</a></li>
                 </ul>
               </div>
-              <div class="property_meta"> <span><i class="icon-select-an-objecto-tool"></i>4800 sq ft</span> <span><i class="icon-bed"></i>3 Bedrooms</span> <span><i class="icon-safety-shower"></i>2 Bedrooms</span> <span><i class="icon-old-television"></i>TV Lounge</span> <span><i class="icon-garage"></i>1 Garage</span> </div>
+              <div class="property_meta"> <span><i class="icon-select-an-objecto-tool"></i>{{$latest->square_foot}} sq ft</span> <span><i class="icon-bed"></i>{{$latest->rooms}} Bedrooms</span> <span><i class="icon-safety-shower"></i>{{$latest->bathroom}} Bathroom</span></div>
             </div>
           </div>
         </div>
-        <div class="item">
-          <div class="property_item heading_space">
-            <div class="image"> <a href="#."><img src="images/latest6.jpg" alt="latest property" class="img-responsive"></a> </div>
-            <div class="price default_clr clearfix bottom20">
-              <span class="tag pull-left">For Rent</span>
-              <h4 class="pull-right">$8,600 Per Month - <small>Family Home</small></h4>
-            </div>
-            <div class="proerty_content">
-              <div class="proerty_text">
-                <h3 class="bottom15"> <a href="#.">Unique Villa With Private Beach</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam power nonummy nibh tempor cum soluta nobis eleifend option congue nihil imperdiet doming…</p>
-              </div>
-              <div class="favroute clearfix">
-                <p class="pull-md-left">45 Regent Street, London, UK</p>
-                <ul class="pull-right">
-                  <li><a href="javascript:void(0)"><i class="icon-video-player"></i></a></li>
-                  <li><a href="javascript:void(0)"><i class="icon-like"></i></a></li>
-                  <li><a href="#two" class="share_expender" data-toggle="collapse"><i class="icon-share3"></i></a></li>
-                </ul>
-              </div>
-              <div class="toggle_share collapse" id="two">
-                <ul>
-                  <li><a href="javascript:void(0)" class="facebook"><i class="icon-facebook-1"></i> Facebook</a></li>
-                  <li><a href="javascript:void(0)" class="twitter"><i class="icon-twitter-1"></i> Twitter</a></li>
-                  <li><a href="javascript:void(0)" class="vimo"><i class="icon-vimeo3"></i> Vimeo</a></li>
-                </ul>
-              </div>
-              <div class="property_meta"> <span><i class="icon-select-an-objecto-tool"></i>4800 sq ft</span> <span><i class="icon-bed"></i>3 Bedrooms</span> <span><i class="icon-safety-shower"></i>2 Bedrooms</span> <span><i class="icon-old-television"></i>TV Lounge</span> <span><i class="icon-garage"></i>1 Garage</span> </div>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="property_item heading_space">
-            <div class="image"> <a href="#."><img src="images/latest1.jpg" alt="latest property" class="img-responsive"></a> </div>
-            <div class="price default_clr clearfix bottom20">
-              <span class="tag pull-left">For Rent</span>
-              <h4 class="pull-right">$8,600 Per Month - <small>Family Home</small></h4>
-            </div>
-            <div class="proerty_content">
-              <div class="proerty_text">
-                <h3 class="bottom15"> <a href="#.">Unique Villa With Private Beach</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam power nonummy nibh tempor cum soluta nobis eleifend option congue nihil imperdiet doming…</p>
-              </div>
-              <div class="favroute clearfix">
-                <p class="pull-md-left">45 Regent Street, London, UK</p>
-                <ul class="pull-right">
-                  <li><a href="javascript:void(0)"><i class="icon-video-player"></i></a></li>
-                  <li><a href="javascript:void(0)"><i class="icon-like"></i></a></li>
-                  <li><a href="#three" class="share_expender" data-toggle="collapse"><i class="icon-share3"></i></a></li>
-                </ul>
-              </div>
-              <div class="toggle_share collapse" id="three">
-                <ul>
-                  <li><a href="javascript:void(0)" class="facebook"><i class="icon-facebook-1"></i> Facebook</a></li>
-                  <li><a href="javascript:void(0)" class="twitter"><i class="icon-twitter-1"></i> Twitter</a></li>
-                  <li><a href="javascript:void(0)" class="vimo"><i class="icon-vimeo3"></i> Vimeo</a></li>
-                </ul>
-              </div>
-              <div class="property_meta"> <span><i class="icon-select-an-objecto-tool"></i>4800 sq ft</span> <span><i class="icon-bed"></i>3 Bedrooms</span> <span><i class="icon-safety-shower"></i>2 Bedrooms</span> <span><i class="icon-old-television"></i>TV Lounge</span> <span><i class="icon-garage"></i>1 Garage</span> </div>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="property_item heading_space">
-            <div class="image"> <a href="#."><img src="images/latest4.jpg" alt="latest property" class="img-responsive"></a> </div>
-            <div class="price default_clr clearfix bottom20">
-              <span class="tag pull-left">For Rent</span>
-              <h4 class="pull-right">$8,600 Per Month - <small>Family Home</small></h4>
-            </div>
-            <div class="proerty_content">
-              <div class="proerty_text">
-                <h3 class="bottom15"> <a href="#.">Unique Villa With Private Beach</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam power nonummy nibh tempor cum soluta nobis eleifend option congue nihil imperdiet doming…</p>
-              </div>
-              <div class="favroute clearfix">
-                <p class="pull-md-left">45 Regent Street, London, UK</p>
-                <ul class="pull-right">
-                  <li><a href="javascript:void(0)"><i class="icon-video-player"></i></a></li>
-                  <li><a href="javascript:void(0)"><i class="icon-like"></i></a></li>
-                  <li><a href="#four" class="share_expender" data-toggle="collapse"><i class="icon-share3"></i></a></li>
-                </ul>
-              </div>
-              <div class="toggle_share collapse" id="eight">
-                <ul>
-                  <li><a href="javascript:void(0)" class="facebook"><i class="icon-facebook-1"></i> Facebook</a></li>
-                  <li><a href="javascript:void(0)" class="twitter"><i class="icon-twitter-1"></i> Twitter</a></li>
-                  <li><a href="javascript:void(0)" class="vimo"><i class="icon-vimeo3"></i> Vimeo</a></li>
-                </ul>
-              </div>
-              <div class="property_meta"> <span><i class="icon-select-an-objecto-tool"></i>4800 sq ft</span> <span><i class="icon-bed"></i>3 Bedrooms</span> <span><i class="icon-safety-shower"></i>2 Bedrooms</span> <span><i class="icon-old-television"></i>TV Lounge</span> <span><i class="icon-garage"></i>1 Garage</span> </div>
-            </div>
-          </div>
-        </div>
+        @endforeach
       </div>
     </div>
   </div>

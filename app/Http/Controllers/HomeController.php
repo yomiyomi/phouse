@@ -42,11 +42,11 @@ class HomeController extends Controller
                 ->take(6)
                 ->get();
 
-          $latest = Property::latest()
-                    ->take(5)
+          $latests = Property::latest()
+                    ->take(4)
                     ->get();
     
-        return view('welcome', compact('slides','featured','deals'));
+        return view('welcome', compact('slides','featured','deals','latests'));
 
 
     }
