@@ -349,6 +349,9 @@
 @yield ('latest')
 
 
+@yield('client')
+
+
 @yield('testimony')
 
 @yield('agent')

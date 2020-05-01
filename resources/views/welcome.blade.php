@@ -337,3 +337,25 @@
   </div>
 </section>
 @endsection
+
+@section('client')
+<section id="logos">
+  <div class="container partner2 padding">
+    <div class="row">
+      <div class="col-sm-10">
+        <h2 class="uppercase">Our Partners</h2>
+        <p class="heading_space">Aliquam nec viverra erat. Aenean elit tellus mattis quis maximus.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div id="partner-slider" class="owl-carousel">
+        @foreach($partners as $partner)
+        <div class="item">
+          <img src="{{$partner->photo}}" alt="{{$partner->name}}">
+        </div>
+        @endforeach
+      </div>
+    </div>
+  </div>
+</section>
+@endsection
