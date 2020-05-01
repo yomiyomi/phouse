@@ -8,6 +8,7 @@ use App\Photo;
 use App\Category;
 use App\Type;
 use App\Feature;
+use App\Partner;
 class HomeController extends Controller
 {
     /**
@@ -45,8 +46,11 @@ class HomeController extends Controller
           $latests = Property::latest()
                     ->take(4)
                     ->get();
+
+          $partners = Partner::all()
+                      ->take(8);
     
-        return view('welcome', compact('slides','featured','deals','latests'));
+        return view('welcome', compact('slides','featured','deals','latests', 'partners'));
 
 
     }
