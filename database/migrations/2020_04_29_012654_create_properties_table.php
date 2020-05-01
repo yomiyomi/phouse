@@ -18,13 +18,15 @@ class CreatePropertiesTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->string('address');
-            $table->longText('features')->default('[{1 : 0},{2 : 0},{3 : 0},{4 : 0},{5 : 0},{6 : 0},{7 : 0},{8 : 0},{9 : 0},{10 : 0},{11 : 0},{12 : 0}]');
+            $table->longText('feature');
             $table->integer('rooms');
             $table->integer('bathroom');
             $table->integer('featured')->default(0);
             $table->integer('square_foot');
             $table->integer('price');
             $table->integer('user_id');
+            $table->integer('status_id');
+            $table->integer('type_id');
             $table->integer('state_id');
             $table->integer('category_id');
             $table->integer('photo_id')->default(0);

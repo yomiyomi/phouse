@@ -7,7 +7,11 @@
     <ul>
       @foreach($slides as $slide)
       <li data-transition="fade">
-        <img src="images/{{$slide->photo}}" alt="" data-bgposition="center center" data-bgfit="cover">
+          @php
+          $photo = $slide->photo->name;
+          $photo_id = json_decode($photo);
+          @endphp
+        <img src="{{$slide->photo_id .''. $photo_id[0]->featured}}" alt="" data-bgposition="center center" data-bgfit="cover">
         <div class="black-caption tp-caption tp-resizeme"
          data-start="1300"
           data-x="['left','left','center','center']" data-hoffset="['0','0','0','15']" 
@@ -16,14 +20,14 @@
           data-transform_idle="o:1;"
           data-transform_in="x:-50px;opacity:0;s:2000;e:Power3.easeOut;" 
 		  data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;">
-          <div class="price">{{$slide->category}}</div>
+          <div class="price">{{ucfirst($slide->status->name)}}</div>
           <h2>{{$slide->title}}</h2>
           <p class="bottom30">{{ substr($slide->description, 0, 40)}}....
           </p>
           <div class="property_meta"> 
             <span><i class="icon-select-an-objecto-tool"></i>{{$slide->square_foot}} sq ft</span> 
             <span><i class="icon-bed"></i>{{$slide->rooms}} Bedroom's</span> 
-            <span><i class="icon-pool-stairs"></i>Swimming Pool</span> 
+            <span><i class="icon-pool-stairs"></i>Type: {{$slide->category->name}}</span> 
           </div>
           <div class="property_meta bottom30"> 
             <span><i class="icon-garage"></i>{{$slide->garage}} Garage</span>
@@ -31,7 +35,7 @@
           </div>
           <div class="bottom row">
             <div class="col-sm-6"><span> <i class="icon-icons74"></i>{{$slide->address}} </span></div>
-            <div class="col-sm-6"><span> &#8358;{{$slide->price}} Per Month -<small> Apartment</small></span></div>
+            <div class="col-sm-6"><span> &#8358;{{$slide->price}} {{$slide->type->name}} -<small>{{$slide->category->name}}</small></span></div>
           </div>
         </div>
       </li>
@@ -183,19 +187,25 @@
         <h4 class="bottom30">{{$featured->address}}</h4>
         <p class="bottom30">{{$featured->description}}</p>
         <div class="row">
+           {{-- @foreach($feature->) --}}
           <div class="col-md-6 col-sm-6">
             <ul class="feature_list">
-              <li>Quiet Neighbourhood</li>
-              <li>Quiet Neighbourhood</li>
+              @php
+                $yes1 = $featured->features;
+                $yes2 = json_decode($yes1); 
+              @endphp
+              <li>{{$yes2[0]->f1}}</li>
+              <li>{{$yes2[0]->f2}}</li>
             </ul>
           </div>
 
           <div class="col-md-6 col-sm-6">
             <ul class="feature_list">
-              <li>Quiet Neighbourhood</li>
-              <li>Quiet Neighbourhood</li>
+              <li>{{$yes2[0]->f3}}</li>
+              <li>{{$yes2[0]->f4}}</li>
             </ul>
           </div>
+         {{--  @endforeach --}}
         </div>
         <div class="property_meta">
           <span><i class="icon-select-an-objecto-tool"></i>{{$featured->square_foot}} sq ft</span> <span><i class="icon-bed"></i>{{$featured->rooms}} Bedrooms</span> <span><i class="icon-safety-shower"></i>{{$featured->bathroom}} Bathroom</span> <span><i class="icon-old-television"></i>TV Lounge</span> <span><i class="icon-garage"></i>{{$featured->garage}} Garage</span> 
@@ -204,7 +214,11 @@
       </div>
       <div class="col-md-6 col-sm-6">
         <div class="feature_main">
-          <img src="images/{{$featured->photo}}" alt="featured" class="img-responsive" style="width: 540px; height: 360px">
+          @php
+          $photo = $featured->photo->name;
+          $photo_id = json_decode($photo);
+          @endphp
+          <img src="{{$featured->photo_id .''. $photo_id[0]->featured}}" alt="featured" class="img-responsive" style="width: 540px; height: 360px">
           <div class="bottom clearfix">
             <span class="pull-left">For Rent</span>
             <h4 class="pull-right">&#8358; {{$featured->price}} Per Month - <small>Family Home</small></h4>
@@ -229,14 +243,19 @@
       <div class="three-item owl-carousel">
         @foreach($deals as $deal)
         <div class="item feature_item">
-          <div class="image"><a href="#."> <img src="images/{{$deal->photo}}" alt="Featured Property" style="width: 364px; height: 254px"></a> 
+          @php
+          $photo = $deal->photo->name;
+          $photo_id = json_decode($photo);
+          @endphp
+          
+          <div class="image"><a href="#."> <img src="{{$deal->photo_id.''.$photo_id[0]->featured }}" alt="Featured Property" style="width: 364px; height: 254px"></a> 
             <span class="price default_clr">For Rent</span>
           </div>
           <div class="proerty_content">
             <div class="proerty_text">
               <h3 class="bottom15"><a href="#.">{{$deal->title}}</a></h3>
               <p>{{ substr($deal->description, 0, 40)}}......</p>
-              <h4 class="top15"> &#8358; {{$deal->price}} Per Month - <small>Family Home</small></h4>
+              <h4 class="top15"> &#8358; {{$deal->price}} Per {{$deal->type->name}} - <small>{{$deal->category->name}}</small></h4>
             </div>
             <table class="table table-responsive">
               <tbody>
@@ -252,15 +271,154 @@
                   <td><i class="icon-safety-shower"></i>Bathrooms</td>
                   <td class="text-right">{{$deal->bathroom}}</td>
                 </tr>
-                <tr>
-                  <td><i class="icon-garage"></i>Garage</td>
-                  <td class="text-right">{{$deal->garage}}</td>
-                </tr>
               </tbody>
             </table>
           </div>
         </div>
         @endforeach
+      </div>
+    </div>
+  </div>
+</section>
+@endsection
+
+@section('latest')
+<section id="property" class="padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-10">
+        <h2 class="uppercase">latest Properties</h2>
+        <p class="heading_space"> We are proud to present to you some of the best homes, apartments, offices e.g. across Australia for affordable 
+          prices. 
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div id="two-col-slider" class="owl-carousel">
+        <div class="item">
+          <div class="property_item heading_space">
+            <div class="image"> <a href="#."><img src="images/latest5.jpg" alt="latest property" class="img-responsive"></a> </div>
+            <div class="price default_clr clearfix bottom20">
+              <span class="tag pull-left">For Rent</span>
+              <h4 class="pull-right">$8,600 Per Month - <small>Family Home</small></h4>
+            </div>
+            <div class="proerty_content">
+              <div class="proerty_text">
+                <h3 class="bottom15"> <a href="#.">Unique Villa With Private Beach</a></h3>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam power nonummy nibh tempor cum soluta nobis eleifend option congue nihil imperdiet doming…</p>
+              </div>
+              <div class="favroute clearfix">
+                <p class="pull-md-left">45 Regent Street, London, UK</p>
+                <ul class="pull-right">
+                  <li><a href="javascript:void(0)"><i class="icon-video-player"></i></a></li>
+                  <li><a href="javascript:void(0)"><i class="icon-like"></i></a></li>
+                  <li><a href="#one" class="share_expender" data-toggle="collapse"><i class="icon-share3"></i></a></li>
+                </ul>
+              </div>
+              <div class="toggle_share collapse" id="one">
+                <ul>
+                  <li><a href="javascript:void(0)" class="facebook"><i class="icon-facebook-1"></i> Facebook</a></li>
+                  <li><a href="javascript:void(0)" class="twitter"><i class="icon-twitter-1"></i> Twitter</a></li>
+                  <li><a href="javascript:void(0)" class="vimo"><i class="icon-vimeo3"></i> Vimeo</a></li>
+                </ul>
+              </div>
+              <div class="property_meta"> <span><i class="icon-select-an-objecto-tool"></i>4800 sq ft</span> <span><i class="icon-bed"></i>3 Bedrooms</span> <span><i class="icon-safety-shower"></i>2 Bedrooms</span> <span><i class="icon-old-television"></i>TV Lounge</span> <span><i class="icon-garage"></i>1 Garage</span> </div>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="property_item heading_space">
+            <div class="image"> <a href="#."><img src="images/latest6.jpg" alt="latest property" class="img-responsive"></a> </div>
+            <div class="price default_clr clearfix bottom20">
+              <span class="tag pull-left">For Rent</span>
+              <h4 class="pull-right">$8,600 Per Month - <small>Family Home</small></h4>
+            </div>
+            <div class="proerty_content">
+              <div class="proerty_text">
+                <h3 class="bottom15"> <a href="#.">Unique Villa With Private Beach</a></h3>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam power nonummy nibh tempor cum soluta nobis eleifend option congue nihil imperdiet doming…</p>
+              </div>
+              <div class="favroute clearfix">
+                <p class="pull-md-left">45 Regent Street, London, UK</p>
+                <ul class="pull-right">
+                  <li><a href="javascript:void(0)"><i class="icon-video-player"></i></a></li>
+                  <li><a href="javascript:void(0)"><i class="icon-like"></i></a></li>
+                  <li><a href="#two" class="share_expender" data-toggle="collapse"><i class="icon-share3"></i></a></li>
+                </ul>
+              </div>
+              <div class="toggle_share collapse" id="two">
+                <ul>
+                  <li><a href="javascript:void(0)" class="facebook"><i class="icon-facebook-1"></i> Facebook</a></li>
+                  <li><a href="javascript:void(0)" class="twitter"><i class="icon-twitter-1"></i> Twitter</a></li>
+                  <li><a href="javascript:void(0)" class="vimo"><i class="icon-vimeo3"></i> Vimeo</a></li>
+                </ul>
+              </div>
+              <div class="property_meta"> <span><i class="icon-select-an-objecto-tool"></i>4800 sq ft</span> <span><i class="icon-bed"></i>3 Bedrooms</span> <span><i class="icon-safety-shower"></i>2 Bedrooms</span> <span><i class="icon-old-television"></i>TV Lounge</span> <span><i class="icon-garage"></i>1 Garage</span> </div>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="property_item heading_space">
+            <div class="image"> <a href="#."><img src="images/latest1.jpg" alt="latest property" class="img-responsive"></a> </div>
+            <div class="price default_clr clearfix bottom20">
+              <span class="tag pull-left">For Rent</span>
+              <h4 class="pull-right">$8,600 Per Month - <small>Family Home</small></h4>
+            </div>
+            <div class="proerty_content">
+              <div class="proerty_text">
+                <h3 class="bottom15"> <a href="#.">Unique Villa With Private Beach</a></h3>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam power nonummy nibh tempor cum soluta nobis eleifend option congue nihil imperdiet doming…</p>
+              </div>
+              <div class="favroute clearfix">
+                <p class="pull-md-left">45 Regent Street, London, UK</p>
+                <ul class="pull-right">
+                  <li><a href="javascript:void(0)"><i class="icon-video-player"></i></a></li>
+                  <li><a href="javascript:void(0)"><i class="icon-like"></i></a></li>
+                  <li><a href="#three" class="share_expender" data-toggle="collapse"><i class="icon-share3"></i></a></li>
+                </ul>
+              </div>
+              <div class="toggle_share collapse" id="three">
+                <ul>
+                  <li><a href="javascript:void(0)" class="facebook"><i class="icon-facebook-1"></i> Facebook</a></li>
+                  <li><a href="javascript:void(0)" class="twitter"><i class="icon-twitter-1"></i> Twitter</a></li>
+                  <li><a href="javascript:void(0)" class="vimo"><i class="icon-vimeo3"></i> Vimeo</a></li>
+                </ul>
+              </div>
+              <div class="property_meta"> <span><i class="icon-select-an-objecto-tool"></i>4800 sq ft</span> <span><i class="icon-bed"></i>3 Bedrooms</span> <span><i class="icon-safety-shower"></i>2 Bedrooms</span> <span><i class="icon-old-television"></i>TV Lounge</span> <span><i class="icon-garage"></i>1 Garage</span> </div>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="property_item heading_space">
+            <div class="image"> <a href="#."><img src="images/latest4.jpg" alt="latest property" class="img-responsive"></a> </div>
+            <div class="price default_clr clearfix bottom20">
+              <span class="tag pull-left">For Rent</span>
+              <h4 class="pull-right">$8,600 Per Month - <small>Family Home</small></h4>
+            </div>
+            <div class="proerty_content">
+              <div class="proerty_text">
+                <h3 class="bottom15"> <a href="#.">Unique Villa With Private Beach</a></h3>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam power nonummy nibh tempor cum soluta nobis eleifend option congue nihil imperdiet doming…</p>
+              </div>
+              <div class="favroute clearfix">
+                <p class="pull-md-left">45 Regent Street, London, UK</p>
+                <ul class="pull-right">
+                  <li><a href="javascript:void(0)"><i class="icon-video-player"></i></a></li>
+                  <li><a href="javascript:void(0)"><i class="icon-like"></i></a></li>
+                  <li><a href="#four" class="share_expender" data-toggle="collapse"><i class="icon-share3"></i></a></li>
+                </ul>
+              </div>
+              <div class="toggle_share collapse" id="eight">
+                <ul>
+                  <li><a href="javascript:void(0)" class="facebook"><i class="icon-facebook-1"></i> Facebook</a></li>
+                  <li><a href="javascript:void(0)" class="twitter"><i class="icon-twitter-1"></i> Twitter</a></li>
+                  <li><a href="javascript:void(0)" class="vimo"><i class="icon-vimeo3"></i> Vimeo</a></li>
+                </ul>
+              </div>
+              <div class="property_meta"> <span><i class="icon-select-an-objecto-tool"></i>4800 sq ft</span> <span><i class="icon-bed"></i>3 Bedrooms</span> <span><i class="icon-safety-shower"></i>2 Bedrooms</span> <span><i class="icon-old-television"></i>TV Lounge</span> <span><i class="icon-garage"></i>1 Garage</span> </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
