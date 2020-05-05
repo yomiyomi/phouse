@@ -263,10 +263,14 @@
 @yield('client')
 
 
+@yield('news start')
+
+
 @yield('testimony')
 
 
 @yield('agent')
+
 
 @yield('partners')
 

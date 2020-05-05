@@ -283,7 +283,7 @@
 @endsection
 
 @section('latest')
-<section id="property" class="padding">
+  <section id="property" class="padding">
   <div class="container">
     <div class="row">
       <div class="col-xs-10">
@@ -302,31 +302,40 @@
                 $photo = $latest->photo->name;
                 $photo_id = json_decode($photo);
               @endphp
-            <div class="image"> <a href="#."><img src="{{$latest->photo_id .''. $photo_id[0]->featured}}" alt="latest property" class="img-responsive" style="width: 560px; height: 310px"></a> </div>
+            <div class="image"> <a href="#."><img src="{{$latest->photo_id .''. $photo_id[0]->featured}}" alt="latest property" class="img-responsive" style="width: 560px; height: 310px;"></a> </div>
             <div class="price default_clr clearfix bottom20">
               <span class="tag pull-left">For {{ucfirst($latest->status->name)}}</span>
-              <h4 class="pull-right">&#8358;{{$latest->price }} - {{$latest->type->name}} - <small>{{$latest->category->name}}</small></h4>
+              <h4 class="pull-right">{{$latest->price }} - {{$latest->type->name}} - <small>{{$latest->category->name}}</small></h4>
             </div>
             <div class="proerty_content">
-		              <div class="proerty_text">
-		                	<h3 class="bottom15"> <a href="#.">{{$latest->title}}</a></h3>
-		                	<p>{{$latest->description}}</p>
-		              </div>
-		              <div class="favroute clearfix">
-		                <p class="pull-md-left">{{$latest->address}}</p>
-		              <div class="property_meta"> <span><i class="icon-select-an-objecto-tool"></i>4800 sq ft</span> <span><i class="icon-bed"></i>3 Bedrooms</span> <span><i class="icon-safety-shower"></i>2 Bedrooms</span> <span><i class="icon-old-television"></i>TV Lounge</span> <span><i class="icon-garage"></i>1 Garage</span> </div>
-		            </div>
-          	</div>
-        </div>
-     	<div class="property_meta">
-		      <span><i class="icon-select-an-objecto-tool"></i>{{$latest->square_foot}} sq ft</span> <span><i class="icon-bed"></i>{{$latest->rooms}} Bedrooms</span> <span><i class="icon-safety-shower"></i>{{$latest->bathroom}} Bathroom</span>
-		</div>
+              <div class="proerty_text">
+                <h3 class="bottom15"> <a href="#.">{{$latest->title}}</a></h3>
+                      <p>{{$latest->description}}</p>
+              </div>
+              <div class="favroute clearfix">
+                <p class="pull-md-left">{{$latest->address}}<</p>
+                <ul class="pull-right">
+                  <li><a href="javascript:void(0)"><i class="icon-video-player"></i></a></li>
+                  <li><a href="javascript:void(0)"><i class="icon-like"></i></a></li>
+                  <li><a href="#one" class="share_expender" data-toggle="collapse"><i class="icon-share3"></i></a></li>
+                </ul>
+              </div>
+              <div class="toggle_share collapse" id="one">
+                <ul>
+                  <li><a href="javascript:void(0)" class="facebook"><i class="icon-facebook-1"></i> Facebook</a></li>
+                  <li><a href="javascript:void(0)" class="twitter"><i class="icon-twitter-1"></i> Twitter</a></li>
+                  <li><a href="javascript:void(0)" class="vimo"><i class="icon-vimeo3"></i> Vimeo</a></li>
+                </ul>
+              </div>
+              <div class="property_meta"> <span><i class="icon-select-an-objecto-tool"></i>{{$latest->square_foot}} sq ft</span> <span><i class="icon-bed"></i>{{$latest->rooms}} Bedrooms</span> <span><i class="icon-safety-shower"></i>{{$latest->bathroom}} Bathrooms</span> <span><i class="icon-old-television"></i>TV Lounge</span> <span><i class="icon-garage"></i>1 Garage</span> </div>
             </div>
           </div>
         </div>
-       </div>
         @endforeach
-	</section>
+      </div>
+    </div>
+  </div>
+</section>
 @endsection
 
 

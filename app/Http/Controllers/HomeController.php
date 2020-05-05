@@ -9,6 +9,7 @@ use App\Category;
 use App\Type;
 use App\Feature;
 use App\Partner;
+use App\Blog;
 class HomeController extends Controller
 {
     /**
@@ -56,7 +57,28 @@ class HomeController extends Controller
     }
 
 
-    public function show()
+    public function news()
+    {
+         $slides = Blog::where('category_id', 1)
+               ->orderBy('created_at', 'asc')
+               ->take(1)
+               ->get();
+
+          $blogs = Blog::orderBy('created_at', 'asc')
+               ->take(6)
+               ->get();
+
+        
+               
+        return view('news', compact('slides','news start','blogs'));
+
+
+
+
+    }
+
+
+     public function show()
     {
       # code...
     }

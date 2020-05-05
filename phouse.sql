@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `categories`
 --
 
-CREATE TABLE `categories` (
+CREATE TABLE IF NOT EXISTS `categories` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `photo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -53,7 +53,7 @@ INSERT INTO `categories` (`id`, `name`, `photo`, `created_at`, `updated_at`) VAL
 -- Table structure for table `features`
 --
 
-CREATE TABLE `features` (
+CREATE TABLE IF NOT EXISTS `features` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -78,7 +78,7 @@ INSERT INTO `features` (`id`, `name`, `created_at`, `updated_at`) VALUES
 -- Table structure for table `migrations`
 --
 
-CREATE TABLE `migrations` (
+CREATE TABLE IF NOT EXISTS `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
@@ -108,7 +108,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- Table structure for table `partners`
 --
 
-CREATE TABLE `partners` (
+CREATE TABLE IF NOT EXISTS `partners` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `photo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -136,7 +136,7 @@ INSERT INTO `partners` (`id`, `name`, `photo`, `created_at`, `updated_at`) VALUE
 -- Table structure for table `password_resets`
 --
 
-CREATE TABLE `password_resets` (
+CREATE TABLE IF NOT EXISTS `password_resets` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
@@ -148,7 +148,7 @@ CREATE TABLE `password_resets` (
 -- Table structure for table `photos`
 --
 
-CREATE TABLE `photos` (
+CREATE TABLE IF NOT EXISTS `photos` (
   `id` int(10) UNSIGNED NOT NULL,
   `property_id` int(11) NOT NULL,
   `name` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -171,7 +171,7 @@ INSERT INTO `photos` (`id`, `property_id`, `name`, `created_at`, `updated_at`) V
 -- Table structure for table `properties`
 --
 
-CREATE TABLE `properties` (
+CREATE TABLE IF NOT EXISTS `properties` (
   `id` int(10) UNSIGNED NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -209,7 +209,7 @@ INSERT INTO `properties` (`id`, `title`, `description`, `address`, `features`, `
 -- Table structure for table `roles`
 --
 
-CREATE TABLE `roles` (
+CREATE TABLE IF NOT EXISTS `roles` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -222,7 +222,7 @@ CREATE TABLE `roles` (
 -- Table structure for table `states`
 --
 
-CREATE TABLE `states` (
+CREATE TABLE IF NOT EXISTS `states` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -243,7 +243,7 @@ INSERT INTO `states` (`id`, `name`, `created_at`, `updated_at`) VALUES
 -- Table structure for table `statuses`
 --
 
-CREATE TABLE `statuses` (
+CREATE TABLE IF NOT EXISTS `statuses` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -265,7 +265,7 @@ INSERT INTO `statuses` (`id`, `name`, `created_at`, `updated_at`) VALUES
 -- Table structure for table `types`
 --
 
-CREATE TABLE `types` (
+CREATE TABLE IF NOT EXISTS `types` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -287,7 +287,7 @@ INSERT INTO `types` (`id`, `name`, `created_at`, `updated_at`) VALUES
 -- Table structure for table `users`
 --
 
-CREATE TABLE `users` (
+CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -311,7 +311,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `phone_no`, `password`, `remember_to
 -- Table structure for table `videos`
 --
 
-CREATE TABLE `videos` (
+CREATE TABLE IF NOT EXISTS `videos` (
   `id` int(10) UNSIGNED NOT NULL,
   `property_id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
